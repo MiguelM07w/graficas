@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráfico Mixto</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .chart-container {
+            background-color: #000000;
+            border: 1px solid #00ff88;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 100px auto 30px;
+            box-shadow: 0 0 30px #00ff8855;
+            animation: cyber-glow 1.5s infinite alternate;
+            max-width: 1000px;
+            width: 90%;
+        }
+
+        @keyframes cyber-glow {
+            from { box-shadow: 0 0 10px #00ff8833; }
+            to { box-shadow: 0 0 40px #00ff88aa, 0 0 20px #00ff8877; }
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 12px 25px;
+            background-color: #002211;
+            border: 1px solid #00ff88;
+            border-radius: 5px;
+            color: #00ff88;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 8px #00ff8855;
+        }
+
+        .back-button:hover {
+            background-color: #004422;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #00ff88aa;
+        }
+
+        .cyber-title {
+            color: #00ff88;
+            text-align: center;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 15px #00ff88;
+        }
+    </style>
+</head>
+<body>
+    <a href="graficas.html" class="back-button">← MENÚ PRINCIPAL</a>
+    <h1 class="cyber-title">CRECIMIENTO POBLACIONAL</h1>
+
+    <div class="chart-container">
+        <canvas id="mixed-chart" width="800" height="450"></canvas>
+    </div>
+
+    <script>
+        new Chart(document.getElementById("mixed-chart"), {
+            type: 'bar',
+            data: {
+                labels: ["1900", "1950", "1999", "2050"],
+                datasets: [{
+                    label: "Europa",
+                    type: "line",
+                    borderColor: "#8e5ea2",
+                    borderWidth: 3,
+                    pointBackgroundColor: "#8e5ea2",
+                    pointBorderColor: "#ffffff",
+                    pointHoverRadius: 8,
+                    data: [408,547,675,734],
+                    fill: false,
+                    tension: 0.4
+                }, {
+                    label: "África",
+                    type: "line",
+                    borderColor: "#3e95cd",
+                    borderWidth: 3,
+                    pointBackgroundColor: "#3e95cd",
+                    pointBorderColor: "#ffffff",
+                    pointHoverRadius: 8,
+                    data: [133,221,783,2478],
+                    fill: false,
+                    tension: 0.4
+                }, {
+                    label: "Europa",
+                    type: "bar",
+                    backgroundColor: "rgba(142, 94, 162, 0.3)",
+                    borderColor: "#8e5ea2",
+                    borderWidth: 1,
+                    data: [408,547,675,734],
+                }, {
+                    label: "África",
+                    type: "bar",
+                    backgroundColor: "rgba(62, 149, 205, 0.3)",
+                    borderColor: "#3e95cd",
+                    borderWidth: 1,
+                    data: [133,221,783,2478]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Crecimiento poblacional (millones): Europa vs África',
+                        color: '#00ff88',
+                        font: {
+                            size: 18,
+                            family: 'Courier New'
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            color: '#00ff88',
+                            font: {
+                                size: 14,
+                                family: 'Courier New'
+                            },
+                            boxWidth: 20,
+                            padding: 15
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#00ff88',
+                            font: {
+                                size: 14,
+                                family: 'Courier New'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(0, 255, 136, 0.1)'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#00ff88',
+                            font: {
+                                size: 14,
+                                family: 'Courier New'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(0, 255, 136, 0.1)'
+                        }
+                    }
+                },
+                interaction: {
+                    mode: 'nearest',
+                    intersect: false
+                }
+            }
+        });
+    </script>
+</body>
+</html>

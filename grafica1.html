@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráfico Radar</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .chart-container {
+            background-color: #000000;
+            border: 1px solid #00ffff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 100px auto 30px;
+            box-shadow: 0 0 50px #00ffff55;
+            animation: cyber-glow 1.5s infinite alternate;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        @keyframes cyber-glow {
+            from { box-shadow: 0 0 10px #00ffff33; }
+            to { box-shadow: 0 0 40px #00ffffaa, 0 0 20px #00ffff77; }
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 12px 25px;
+            background-color: #002222;
+            border: 1px solid #00ffff;
+            border-radius: 5px;
+            color: #00ffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 8px #00ffff55;
+        }
+
+        .back-button:hover {
+            background-color: #004444;
+            transform: skew(-10deg);
+            box-shadow: 0 0 25px #00ffffaa;
+        }
+
+        .cyber-title {
+            color: #00ffff;
+            text-align: center;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 15px #00ffff;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <a href="graficas.html" class="back-button">← MENÚ PRINCIPAL</a>
+    <h1 class="cyber-title">DISTRIBUCIÓN POBLACIONAL</h1>
+
+    <div class="chart-container">
+        <canvas id="radar-chart" width="800" height="600"></canvas>
+    </div>
+
+    <script>
+        new Chart(document.getElementById("radar-chart"), {
+            type: 'radar',
+            data: {
+                labels: ["África", "Asia", "Europa", "Latinoamérica", "Norteamérica"],
+                datasets: [
+                    {
+                        label: "1950",
+                        fill: true,
+                        backgroundColor: "rgba(0, 255, 255, 0.1)",
+                        borderColor: "#00ffff",
+                        pointBorderColor: "#ffffff",
+                        pointBackgroundColor: "#00ffff",
+                        pointHoverRadius: 8,
+                        pointBorderWidth: 2,
+                        data: [8.77,55.61,21.69,6.62,6.82],
+                        borderWidth: 3
+                    }, {
+                        label: "2050",
+                        fill: true,
+                        backgroundColor: "rgba(255, 0, 255, 0.1)",
+                        borderColor: "#ff00ff",
+                        pointBorderColor: "#ffffff",
+                        pointBackgroundColor: "#ff00ff",
+                        pointHoverRadius: 8,
+                        pointBorderWidth: 2,
+                        data: [25.48,54.16,7.61,8.06,4.45],
+                        borderWidth: 3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribución porcentual de la población mundial',
+                        color: '#00ffff',
+                        font: {
+                            size: 18,
+                            family: 'Courier New'
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            color: '#00ffff',
+                            font: {
+                                size: 14,
+                                family: 'Courier New'
+                            },
+                            boxWidth: 25,
+                            padding: 15
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: 'rgba(0, 255, 255, 0.2)'
+                        },
+                        grid: {
+                            color: 'rgba(0, 255, 255, 0.1)'
+                        },
+                        pointLabels: {
+                            color: '#00ffff',
+                            font: {
+                                size: 14,
+                                family: 'Courier New'
+                            }
+                        },
+                        ticks: {
+                            color: '#00ffff',
+                            backdropColor: '#000000',
+                            z: 1
+                        }
+                    }
+                },
+                elements: {
+                    line: {
+                        tension: 0.4
+                    }
+                },
+                interaction: {
+                    mode: 'nearest',
+                    intersect: false
+                }
+            }
+        });
+    </script>
+</body>
+</html>

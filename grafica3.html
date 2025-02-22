@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráfico de Burbujas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .chart-container {
+            background-color: #000000;
+            border: 1px solid #ff00ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 100px auto 30px;
+            box-shadow: 0 0 30px #ff00ff55;
+            animation: neon-pulse 1.5s infinite alternate;
+            max-width: 1000px;
+            width: 90%;
+        }
+
+        @keyframes neon-pulse {
+            from { box-shadow: 0 0 10px #ff00ff33; }
+            to { box-shadow: 0 0 40px #ff00ffaa, 0 0 20px #ff00ff77; }
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 12px 25px;
+            background-color: #220022;
+            border: 1px solid #ff00ff;
+            border-radius: 5px;
+            color: #ff00ff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 8px #ff00ff55;
+        }
+
+        .back-button:hover {
+            background-color: #440044;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff00ffaa;
+        }
+
+        .cyber-title {
+            color: #ff00ff;
+            text-align: center;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 15px #ff00ff;
+        }
+    </style>
+</head>
+<body>
+    <a href="graficas.html" class="back-button">← MENÚ PRINCIPAL</a>
+    <h1 class="cyber-title">POBLACIÓN MUNDIAL 2050</h1>
+
+    <div class="chart-container">
+        <canvas id="bubble-chart" width="800" height="800"></canvas>
+    </div>
+
+    <script>
+        new Chart(document.getElementById("bubble-chart"), {
+            type: 'bubble',
+            data: {
+                labels: "Africa",
+                datasets: [
+                    {
+                        label: ["China"],
+                        backgroundColor: "rgba(255, 50, 150, 0.3)",
+                        borderColor: "#ff00ff",
+                        borderWidth: 2,
+                        data: [{
+                            x: 21269017,
+                            y: 5.245,
+                            r: 25
+                        }],
+                        hoverBackgroundColor: "rgba(255, 50, 150, 0.7)"
+                    }, {
+                        label: ["Dinamarca"],
+                        backgroundColor: "rgba(50, 255, 150, 0.3)",
+                        borderColor: "#00ff88",
+                        borderWidth: 2,
+                        data: [{
+                            x: 258702,
+                            y: 7.526,
+                            r: 15
+                        }],
+                        hoverBackgroundColor: "rgba(50, 255, 150, 0.7)"
+                    }, {
+                        label: ["Alemania"],
+                        backgroundColor: "rgba(150, 50, 255, 0.3)",
+                        borderColor: "#8e5ea2",
+                        borderWidth: 2,
+                        data: [{
+                            x: 3979083,
+                            y: 6.994,
+                            r: 20
+                        }],
+                        hoverBackgroundColor: "rgba(150, 50, 255, 0.7)"
+                    }, {
+                        label: ["Japón"],
+                        backgroundColor: "rgba(255, 150, 50, 0.3)",
+                        borderColor: "#ffaa00",
+                        borderWidth: 2,
+                        data: [{
+                            x: 4931877,
+                            y: 5.921,
+                            r: 20
+                        }],
+                        hoverBackgroundColor: "rgba(255, 150, 50, 0.7)"
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Población mundial predicha (millones) en 2050',
+                        color: '#ff00ff',
+                        font: {
+                            size: 18,
+                            family: 'Courier New'
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            color: '#ff00ff',
+                            font: {
+                                size: 14,
+                                family: 'Courier New'
+                            },
+                            boxWidth: 20,
+                            padding: 15
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Felicidad',
+                            color: '#ff00ff',
+                            font: {
+                                size: 14,
+                                family: 'Courier New'
+                            }
+                        },
+                        ticks: {
+                            color: '#ff00ff',
+                            font: {
+                                size: 12
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 0, 255, 0.1)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'GDP (PPP)',
+                            color: '#ff00ff',
+                            font: {
+                                size: 14,
+                                family: 'Courier New'
+                            }
+                        },
+                        ticks: {
+                            color: '#ff00ff',
+                            font: {
+                                size: 12
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 0, 255, 0.1)'
+                        }
+                    }
+                },
+                interaction: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                elements: {
+                    point: {
+                        hoverRadius: 15,
+                        hoverBorderWidth: 3
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
